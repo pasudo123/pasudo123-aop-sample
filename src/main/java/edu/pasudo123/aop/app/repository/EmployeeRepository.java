@@ -1,4 +1,4 @@
-package edu.pasudo123.aop.repository;
+package edu.pasudo123.aop.app.repository;
 
 import edu.pasudo123.aop.app.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
