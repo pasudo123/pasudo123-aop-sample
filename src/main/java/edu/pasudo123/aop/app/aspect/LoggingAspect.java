@@ -32,7 +32,6 @@ public class LoggingAspect {
             " || within(@org.springframework.web.bind.annotation.RestController *)")
     public void springBeanPointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
-        LOGGER.info("스프링 빈 포인트 컷 =====>");
     }
 
     /**
@@ -42,7 +41,6 @@ public class LoggingAspect {
             " || within(edu.pasudo123.aop.app.controller..*)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
-        LOGGER.info("애플리케이션 패키지 포인트 컷 =====>");
     }
 
     /**
@@ -68,11 +66,16 @@ public class LoggingAspect {
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
 
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("Enter: {}.{}() with argument[s] = {}", joinPoint.getSignature().getDeclaringTypeName(),
-                    joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
+            LOGGER.debug("Enter: {}.{}() with argument[s] = {}",
+                    joinPoint.getSignature().getDeclaringTypeName(),
+                    joinPoint.getSignature().getName(),
+                    Arrays.toString(joinPoint.getArgs()));
         }
         try {
+
+            LOGGER.debug("수행한다.");
             Object result = joinPoint.proceed();
+
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug("Exit: {}.{}() with result = {}", joinPoint.getSignature().getDeclaringTypeName(),
                         joinPoint.getSignature().getName(), result);

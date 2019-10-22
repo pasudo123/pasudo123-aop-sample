@@ -4,8 +4,6 @@ import edu.pasudo123.aop.app.model.Employee;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.swing.text.html.parser.Entity;
-
 /**
  * Created by pasudo123 on 2019-10-21
  * Blog: https://pasudo123.tistory.com/

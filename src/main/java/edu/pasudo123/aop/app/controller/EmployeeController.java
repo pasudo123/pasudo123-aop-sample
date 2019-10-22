@@ -24,6 +24,11 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    @PostMapping("/employees")
+    public Employee createEmployee(@RequestBody @Valid EmployeeDto.Request dto) {
+        return employeeService.createEmployee(dto);
+    }
+
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
@@ -33,11 +38,6 @@ public class EmployeeController {
     public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long id) throws ResourceNotFoundException {
 
         return ResponseEntity.ok().body(employeeService.getEmployeeById(id));
-    }
-
-    @PostMapping("/employees")
-    public Employee createEmployee(@RequestBody @Valid EmployeeDto.Request dto) {
-        return employeeService.createEmployee(dto);
     }
 
     @PutMapping("/employees/{id}")
